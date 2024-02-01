@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent  {
+        docker { image 'golang:latest' } 
+    }
 
     stages {
         stage("Checkout") {
@@ -9,7 +11,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh './main'
+                sh 'go build /Omega/main.go'
             }
         }
     }
